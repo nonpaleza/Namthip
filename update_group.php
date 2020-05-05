@@ -57,7 +57,7 @@ mysqli_close($conn);
     </tr>
     <tr>
       <td colspan="2"><img src="images/update_08.jpg" width="93" height="1" alt=""></td>
-      <td colspan="2" rowspan="3"><img src="images/update_09.jpg" width="102" height="36" alt=""></td>
+      <td colspan="2" rowspan="3"><a href="select.php"><img src="images/update_09.jpg" width="102" height="36" alt=""></a></td>
       <td colspan="2" rowspan="3"><img src="images/update_10.jpg" width="379" height="36" alt=""></td>
       <td><img src="images/spacer.gif" width="1" height="1" alt=""></td>
     </tr>

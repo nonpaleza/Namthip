@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!isset($_SESSION['User_username'])){
+	header("Location: home.php");
+}
+?>
 <html>
 <head>
 <title>insert_group</title>

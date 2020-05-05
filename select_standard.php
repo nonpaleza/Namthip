@@ -1,42 +1,133 @@
-<form method="get" id="form" enctype="multipart/form-data" action="" ><br>
-<strong><center>ข้อมูลมาตรฐานการเรียนรู้ หมวดวิชาศึกษาทั่วไป</strong></center><br><br>
-    <strong><center>ค้นหาข้อมูล</strong>
-    <input type="text" name="search" size="30" value="">
-    <input type="submit" value="ค้นหาข้อมูล"><br><br>
-	ตารางแสดงข้อมูลมาตรฐานการเรียนรู้ หมวดวิชาศึกษาทั่วไป</center>
-</form>
 <?php
-$date = date("l d F Y");
-echo "Todey : $date"."<BR>";
 include_once('conn.php');
 $search = isset($_GET['search']) ? $_GET['search']:'';
-$sql = "SELECT * FROM standard WHERE ID_std LIKE '%$search%'";
-$result = mysqli_query($conn,$sql)
-	or die ("Error cannot select data".mysqli_error($conn));
-	echo "<table border=3px 
-			bordercolor=#DOE7A3
-			bgcolor=#FFFFCC
-			align=center>";
-	echo "<tr align = center>";
-	echo "<th>รหัสมาตรฐาน</th>";
-	echo "<th>ชื่อมาตรฐานการเรียนรู้</th>";
-	echo "<th>อัพเดท</th>";
-	echo "<th>ลบ</th>";
-	echo "</tr>";
-while($row = mysqli_fetch_array($result))
-{
-	echo "<tr align=center>";
-	echo "<td>".$row['ID_std']."</td>";
-	echo "<td>".$row['name_std']."</td>";
-	echo "<td><a href='update_form_standard.php?num_std=".$row['num_std']."'>
-	<img src='edit.png' width='20px' height='20px'></a></td>";
-	echo "<td><a href='delete_standard.php?num_std=".$row['num_std']."'
-	onclick='return confirm(\"คุณต้องการที่จะลบข้อมูลนี้หรือไม่ ?\")'>
-	<img src='delete.png' width='20px' height='20px'></a></td>";
-	echo "</tr>";
+$sql = "SELECT * FROM standard WHERE standard_name LIKE '%$search%'";
+$conn= mysqli_connect("localhost","root","","capacity") 
+or die("Error: " . mysqli_error($conn));
+mysqli_query($conn, "SET NAMES 'utf8' ");
+//query
+$query=mysqli_query($conn,"SELECT COUNT(id) FROM standard WHERE standard_name LIKE '%$search%'");
+	$row = mysqli_fetch_row($query);
+
+	$rows = $row[0];
+
+	$page_rows = 15;  //จำนวนข้อมูลที่ต้องการให้แสดงใน 1 หน้า  ตย. 5 record / หน้า 
+
+	$last = ceil($rows/$page_rows);
+
+	if($last < 1){
+		$last = 1;
+	}
+
+	$pagenum = 1;
+
+	if(isset($_GET['pn'])){
+		$pagenum = preg_replace('#[^0-9]#', '', $_GET['pn']);
+	}
+
+	if ($pagenum < 1) {
+		$pagenum = 1;
+	}
+	else if ($pagenum > $last) {
+		$pagenum = $last;
+	}
+
+	$limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' .$page_rows;
+
+	$nquery=mysqli_query($conn,$sql);
+
+	$paginationCtrls = '';
+
+	if($last != 1){
+
+	if ($pagenum > 1) {
+$previous = $pagenum - 1;
+		$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$previous.'" class="btn btn-info">Previous</a> &nbsp; &nbsp; ';
+
+		for($i = $pagenum-4; $i < $pagenum; $i++){
+			if($i > 0){
+		$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'" class="btn btn-primary">'.$i.'</a> &nbsp; ';
+			}
+	}
 }
-echo "</table>"."<br>";
-mysqli_free_result($result);
-mysqli_close($conn);
+
+	$paginationCtrls .= ''.$pagenum.' &nbsp; ';
+
+	for($i = $pagenum+1; $i <= $last; $i++){
+		$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'" class="btn btn-primary">'.$i.'</a> &nbsp; ';
+		if($i >= $pagenum+4){
+			break;
+		}
+	}
+
+if ($pagenum != $last) {
+$next = $pagenum + 1;
+$paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next.'" class="btn btn-info">Next</a> ';
+}
+	}
 ?>
-<center><a href='insert_form_standard.php'>ย้อนกลับ</a></center>
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"" rel="nofollow">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>ข้อมูลมาตรฐานการเรียนรู้ หมวดวิชาศึกษาทั่วไป</title>
+	</head>
+	<body>
+	<div rel = "nofollow">
+			<div style = "height: 20px;"></div>
+			<div class = "row">
+				<div class = "col-lg-2">
+				</div>
+				<div class = "col-lg-8">
+				<table width = '1270px' height = '40px' class="table">
+				<tr><td></td>
+				<td width = '1020px'></td>
+				<td width = '600px'>
+				<form method = "get" id = "form" enctype = "multipart/form-data">
+					<strong style="font-size : 4">ค้นหาข้อมูล</strong>
+                    <input type = "text" name = "search" placeholder = "&nbsp&nbsp กรุณาใส่ชื่อที่ต้องการค้นหา" size = "30"/>
+					<input type = "submit" value = "ค้นหา" class = "btn btn-primary"/><BR>
+				</form>
+				</td></tr>
+				<font size="4"><center><b><u>ตารางข้อมูลมาตรฐานการเรียนรู้ หมวดวิชาศึกษาทั่วไป</b></u></center></font>
+				</table>
+					<table class="table table-striped table-bordered table-hover">
+						<thead>
+							<tr class="info" >
+							<th><center>รหัสมาตรฐาน</th>
+							<th><center>ชื่อมาตรฐานการเรียนรู้</th>
+							<th><center>แก้ไขข้อมูล</th>
+							<th><center>ลบข้อมูล</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+								while($crow = mysqli_fetch_array($nquery)){
+							?>
+							<tr>
+								<td><center><?php echo $crow['standard_id']; ?></td>
+								<td><?php echo $crow['standard_name']; ?></td>
+								<td><center><?php echo "<a href='update_from_standard.php?id=".$crow['id']."'><img src='edit.png' width='20px' height='20px'></a></td></a>"; ?></td>
+								<td><center><?php echo "<a href='delete_standard.php?id=".$crow['id']."' onclick='return confirm(\"คุณต้องการที่จะลบข้อมูลนี้หรือไม่ ?\")'><img src='delete.png' width='20px' height='20px'></a></td></a>"; ?></td>
+							</tr>
+							<?php
+									}
+							?>
+						</tbody>
+					</table>
+					<div id="pagination_controls"><?php echo $paginationCtrls; ?></div>
+				</div>
+				<div class="col-lg-2">
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+
+<!-- Ref : 
+
+	https://www.sourcecodester.com/tutorials/php/11606/simple-pagination-using-phpmysqli.html
+
+	-->
+	<a href="insert_from_standard.php"><center>เพิ่มข้อมูล</center></a>

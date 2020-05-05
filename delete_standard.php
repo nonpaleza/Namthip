@@ -1,10 +1,10 @@
 <?php
 include_once('conn.php');
-$num_std = $_GET['num_std'];
+$id = $_GET['id'];
 $sql = "delete from standard
-		where num_std = '$num_std'";
+		where id = '$id'";
 $result=mysqli_query($conn,$sql);
-if ($result){
+if($result){
 	echo "<script>
 			alert('ลบข้อมูลเรียบร้อยแล้ว');
 			window.location='select_standard.php';

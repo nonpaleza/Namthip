@@ -1,23 +1,29 @@
-<center><br><br><br><br><br><br><br><br><br>
 <?php
 include_once('conn.php');
-   if (empty ($_POST['ID_std'])){
-        echo "กรุณากรอก ข้อมูลมาตรฐานการเรียนรู้ หมวดวิชาศึกษาทั่วไป";
-        exit();
-    } else {
-        $ID_std = mysqli_real_escape_string($conn, $_POST['ID_std']); /*คำสั่งนี้ mysqli_real_escape_string เป็นการกันระบบสำหรับคนที่ไม่หวังดีมาทำลาย*/
+$standard_id= $_POST['standard_id'];
+$standard_name= $_POST['standard_name'];
+if($standard_id=="" || empty($standard_id)|| $standard_name=="" || empty($standard_name))
+{
+	echo "กรุณากรอกข้อมูลให้ครบถ้วน";
+	echo "<script language='Javascript'>
+			alert('กรุณากรอกข้อมูลให้ครบถ้วน')
+			window.location='insert_from_standard.php';
+			</script>";
+}else{
+$sql = "insert into standard(standard_id,standard_name)
+values('$standard_id','$standard_name')";
+$result=mysqli_query($conn,$sql);
+if($result){
+	echo "<script>
+			alert('เพิ่มข้อมูลในตารางเรียบร้อยแล้ว')
+			window.location='select_standard.php';
+			</script>";
+}else{
+	echo mysqli_error($conn);
+	echo "<script>
+			alert('ไม่สามารถเพิ่มข้อมูลได้')
+			</script>";
 }
-$ID_std= $_POST['ID_std'];
-$name_std = $_POST['name_std'];
-$sql = "insert into standard (ID_std,name_std) values('$ID_std','$name_std')";
-  //echo $sql."<BR>";
-    $result= mysqli_query($conn, $sql);	
-    if ($result) { 
-        echo "เพิ่มข้อมูลเรียบร้อย";
-    } else {
-        echo "เกิดข้อผิดพลาดในการเพิ่มข้อมูล".mysqli_errno($conn);
 }
 mysqli_close($conn);
-
 ?>
-<br><br><a href='select_standard.php'>ข้อมูลมาตรฐานการเรียนรู้ หมวดวิชาศึกษาทั่วไป</a></center>

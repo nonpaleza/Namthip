@@ -20,7 +20,7 @@ $result = mysqli_query($conn,$sql)
 	echo "<tr align = center>";
 	echo "<th>ชื่อกลุ่มเรียน</th>";
 	echo "<th>หลักสูตร</th>";
-	echo "<th>อัพเดท</th>";
+	echo "<th>แก้ไข</th>";
 	echo "<th>ลบ</th>";
 	echo "</tr>";
 while($row = mysqli_fetch_array($result))
