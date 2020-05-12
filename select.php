@@ -39,4 +39,4 @@ echo "</table>"."<br>";
 mysqli_free_result($result);
 mysqli_close($conn);
 ?>
-<center><a href='select2group.php'>ย้อนกลับ</a></center>
+<center><a href='insert_group.php'>ย้อนกลับ</a></center>

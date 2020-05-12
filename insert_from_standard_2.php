@@ -41,7 +41,7 @@ require 'conn.php';
     </tr>
     <tr>
       <td colspan="3"><label for="User_name"></label>
-      <input type="number" name="id_small" id="id_small" style="width:227px;height:30px;"></td>
+      <input type="number" name="id_small" id="id_small" maxlength="3" style="width:227px;height:30px;"></td>
       <td><img src="images/spacer.gif" width="1" height="30" alt=""></td>
     </tr>
     <tr>

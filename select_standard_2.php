@@ -33,7 +33,7 @@
 	$q = "select * FROM standard_2 WHERE id_small ";
     $q = "select standard_2.std_id, standard.standard_id, standard_2.id_small, standard_2.std_name ";
     $q .= "from standard_2 inner join standard ON standard.id = standard_2.id ";
-	$q .= "order by standard_2.std_id, standard_2.std_id $limit ";
+	$q .= "order by standard_2.id, standard_2.id $limit ";
 	$result = mysqli_query($conn,$q);
 
 	$paginationCtrls = '';

@@ -2,7 +2,11 @@
 <?php
 include_once('conn.php');
    if (empty ($_POST['group'])){
-        echo "กรุณากรอกข้อมูลกลุ่มเรียน";
+	echo "กรุณากรอกข้อมูลให้ครบถ้วน";
+	echo "<script language='Javascript'>
+			alert('กรุณากรอกข้อมูลให้ครบถ้วน')
+			window.location='insert_group.php';
+			</script>";
         exit();
     } else {
         $group = mysqli_real_escape_string($conn, $_POST['group']); /*คำสั่งนี้ mysqli_real_escape_string เป็นการกันระบบสำหรับคนที่ไม่หวังดีมาทำลาย*/

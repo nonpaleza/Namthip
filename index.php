@@ -1,7 +1,7 @@
 
 <html>
 <head>
-<title>index_r</title>
+<title>index</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script type="text/javascript">
 function MM_swapImgRestore() { //v3.0
@@ -27,7 +27,7 @@ function MM_swapImage() { //v3.0
 }
 </script>
 </head>
-<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('images/index_r_03.jpg','images/index_r_05.jpg','images/index_r_07.jpg','images/index_r_10.jpg','images/index_r_20.jpg','images/index_r_18.jpg','images/index_r_23.jpg','images/index_r_29.jpg','images/index_r_30.jpg','images/index_r_32.jpg','images/index_r_34.jpg','images/index_r_37.jpg','images/index_r_16.jpg')">
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('images/index_r_03.jpg','images/index_r_05.jpg','images/index_r_07.jpg','images/index_r_10.jpg','images/index_r_20.jpg','images/index_r_23.jpg','images/index_r_29.jpg','images/index_r_30.jpg','images/index_r_32.jpg','images/index_r_34.jpg','images/index_r_37.jpg','images/index_r_16.jpg','images/index_rr_18.jpg')">
 <form name="form1" method="post" action="">
   <p>&nbsp;</p>
   <p>
@@ -40,11 +40,11 @@ function MM_swapImage() { //v3.0
     </tr>
     <tr>
       <td rowspan="12"><img src="images/index_02.jpg" width="164" height="406" alt=""></td>
-      <td colspan="2" rowspan="2"><a href="select2group.php" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('1','','images/index_r_03.jpg',1)"><img src="images/index_03.jpg" width="126" height="119" id="1"></a></td>
+      <td colspan="2" rowspan="2"><a href="insert_group.php" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('1','','images/index_r_03.jpg',1)"><img src="images/index_03.jpg" width="126" height="119" id="1"></a></td>
       <td rowspan="12"><img src="images/index_04.jpg" width="56" height="406" alt=""></td>
       <td rowspan="2"><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('2','','images/index_r_05.jpg',1)"><img src="images/index_05.jpg" width="126" height="119" id="2"></a></td>
       <td colspan="2" rowspan="7"><img src="images/index_06.jpg" width="57" height="255" alt=""></td>
-      <td colspan="3" rowspan="2"><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('3','','images/index_r_07.jpg',1)"><img src="images/index_07.jpg" width="128" height="119" id="3"></a></td>
+      <td colspan="3" rowspan="2"><a href="select2Subject.php" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('3','','images/index_r_07.jpg',1)"><img src="images/index_07.jpg" width="128" height="119" id="3"></a></td>
       <td colspan="8"><img src="images/index_08.jpg" width="343" height="1" alt=""></td>
       <td><img src="images/spacer.gif" width="1" height="1" alt=""></td>
     </tr>
@@ -64,7 +64,7 @@ function MM_swapImage() { //v3.0
     <tr>
       <td rowspan="2"><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('6','','images/index_r_16.jpg',1)"><img src="images/index_16.jpg" width="126" height="123" id="6"></a></td>
       <td rowspan="4"><img src="images/index_17.jpg" width="1" height="130" alt=""></td>
-      <td rowspan="3"><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('7','','images/index_r_18.jpg',1)"><img src="images/index_18.jpg" width="125" height="124" id="7"></a></td>
+      <td rowspan="3"><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('sa','','images/index_rr_18.jpg',1)"><img src="images/index_18.jpg" width="125" height="124" id="sa"></a></td>
       <td rowspan="4"><img src="images/index_19.jpg" width="2" height="130" alt=""></td>
       <td><img src="images/spacer.gif" width="1" height="1" alt=""></td>
     </tr>

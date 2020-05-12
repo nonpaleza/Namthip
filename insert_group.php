@@ -1,8 +1,3 @@
-<?php
-session_start();
-if(!isset($_SESSION['User_username'])){
-	header("Location: home.php");
-}
 ?>
 <html>
 <head>
@@ -80,7 +75,7 @@ function MM_swapImage() { //v3.0
     </tr>
     <tr>
       <td colspan="3"><img src="images/insert_group_15.jpg" width="392" height="83" alt=""></td>
-      <td><a href="select2group.php" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image31','','images/insert_group_r_16.jpg',1)"><img src="images/insert_group_16.jpg" width="89" height="83" id="Image31"></a></td>
+      <td><a href="index.php" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image31','','images/insert_group_r_16.jpg',1)"><img src="images/insert_group_16.jpg" width="89" height="83" id="Image31"></a></td>
       <td><img src="images/spacer.gif" width="1" height="83" alt=""></td>
     </tr>
     <tr>
